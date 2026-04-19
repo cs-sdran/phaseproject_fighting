@@ -47,5 +47,9 @@ public class Character {
             System.out.println("防御力：" + DEF);
     }
 
+    public String showInfo() {
+        return "Name: " + name + "\nHP: " + HP + "/" + MAXHP + "\nATK: " + ATK + "\nDEF: " + DEF;
+    }
+
 
 }
