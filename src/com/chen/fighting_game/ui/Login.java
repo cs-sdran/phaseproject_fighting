@@ -201,17 +201,9 @@ public class Login {
     }
 
     //判断用户名是否为字母与数字结合或者为纯数字的方法
-    public boolean checkname(String name) {
-        int charcount = 0;
-        int numcount = 0;
-        int othercount = 0;
-        for (int i = 0; i < name.length(); i++) {
-            char c = name.charAt(i);
-            if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') charcount++;
-            else if (c >= '0' && c <= '9') numcount++;
-            else othercount++;
-        }
-        return charcount>0 && numcount>=0 && othercount==0;
+    public boolean checkname(String name) {//使用正则表达式
+
+        return name!=null&&name.matches("^[a-zA-Z0-9]*[a-zA-Z][A-Za-z0-9]*$");
     }
 
     //判断用户名是否存在的方法
@@ -224,19 +216,11 @@ public class Login {
         return false;
     }
 
-    //判断密码只能是字母加数字的组合，不能有其他字母
-    public boolean checkpassword(String password) {
-       int charcount=0;
-       int numcount=0;
-       int othercount=0;
-        for (int i = 0; i < password.length(); i++) {
-            char c = password.charAt(i);
-            if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') charcount++;
-            else if (c >= '0' && c <= '9') numcount++;
-            else othercount++;
+    //判断密码只能是字母加数字的组合，不能有其他字符
+    public boolean checkpassword(String password) {//使用正则表达式
 
-        }
-        return charcount>0 && numcount >0 &&othercount==0;
+
+        return password.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z0-9]+$");
     }
 
     //获取验证码
